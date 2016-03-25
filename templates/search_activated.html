@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} - Obserwacja aktywowana {% endblock %}
+{% block content %}
+<style>
+.o-orange{
+    color:#F4511E;
+    }
+.o-first{
+    padding-top:100px;
+    background-color:#F2F2F2;
+    height:100%;
+    min-height:100%;
+    padding-bottom:100px;
+    }
+#text{
+    padding-bottom:30px;
+    }
+p{
+    line-height:170%;
+    font-size:16px;
+    }
+.img-responsive{
+    padding-bottom: 30px;
+    margin: 0 auto;
+    }
+</style>
+<div class="o-first">
+    <div class="text-center" id="text">
+        <h2>Dziękujemy za potwierdzenie Twojej obserwacji.</h2>
+    </div>
+    <p>
+        <img src="{% static 'images/logo_grey.jpg' %}" class="img-responsive" alt="AlleWatcher logo"/>
+    </p>
+    <div class="container">
+        <p>
+        Przez siedem najbliższych dni o godzinie 9.00 będziesz otrzymywać maile zawierające wyniki naszej obserwacji.
+            Nie zapomnij, żeby odświeżyć swoją subskrypcję po tym czasie.
+        </p>
+        <p>
+        W <span class="o-orange">Alle</span>Watcher możesz ustawić aż trzy obserwacje przypisane do jednego maila.
+            Nie zwlekaj i wybierz kolejną obserwację.
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} - Potwierdź obserwację {% endblock %}
+{% block content %}
+<style>
+.o-orange{
+    color:#F4511E;
+    }
+.o-first{
+    padding-top:100px;
+    background-color:#F2F2F2;
+    height:100%;
+    min-height:100%;
+    padding-bottom:100px;
+    }
+.container{
+    padding-top: 30px;
+    }
+.container p{
+    font-size: 16px;
+    }
+.img-responsive{
+    padding-top: 30px;
+    margin: 0 auto;
+    }
+</style>
+<div class="o-first">
+    <h2 class="text-center">
+    Dziękujemy za skorzystanie z naszych usług.
+    </h2>
+    <p>
+        <img src="{% static 'images/logo_grey.jpg' %}" class="img-responsive" alt="AlleWatcher logo"/>
+    </p>
+    <div class="container">
+        <p>
+        Przyjęliśmy Twoją obserwację i już jesteśmy gotowi ją zrealizować, musisz ją jedynie potwierdzić.
+        </p>
+        <p>
+        W tym celu została wysłana do Ciebie wiadomość z linkiem który pozwoli nam aktywować zlecenie.
+            Kliknij w niego, abyśmy mogli zacząć przeszukiwać allegro w poszukiwaniu interesujących Cię aukcji.
+            Masz na to 48 godzin.
+        </p>
+
+        <p>
+        Pamiętaj, że obecnie możesz ustawić, trzy obserwacje całkowicie za darmo posługując się jednym adresem e-mail.
+        </p>
+    </div>
+</div>
+{% endblock %}

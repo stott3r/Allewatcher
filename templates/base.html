@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+{% load staticfiles %}
+<meta charset="UTF-8">
+<meta name="author" content="Bartłomiej Strzyga">
+<meta name="description" content="">
+<meta name="keywords" content="AlleWatcher, Allegro, watcher, search, konkurencja, obserwowanie aukcji, automatyczne,
+aukcje, nadzór, śledzenie">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width = device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<title>AlleWatcher {% block title %}{% endblock %}</title>
+</head>
+<style>
+html, body{
+    margin: 0px;
+    }
+.navbar {
+    background-color:#F2F2F2;
+    border:0;
+    letter-spacing:2px;
+    }
+.navbar-nav li a:hover, .navbar-nav li.active a{
+    color:#F4511E !important;
+    background-color:#FFF !important;
+    }
+.nav .active a{
+    color:#F4511E !important;
+    background:#FFF !important;
+    }
+#logo-small{
+    padding-top:-10px;
+    }
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f4511e;
+}
+</style>
+<body id="page">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
+                <a class="navbar-brand" href="http://localhost:8000#onas">
+                    <img src="{% static 'images/logo-small.jpg' %}" alt="AlleWatcher logo small" id="logo_small"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://localhost:8000#about">O NAS</a></li>
+                <li><a href="http://localhost:8000#introduce">JAK DZIAŁAMY</a></li>
+                <li><a href="/search/free/">OBSERWUJ</a></li>
+                <li><a href="http://localhost:8000#contact">KONTAKT</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="wrap">
+    {% block content %}{% endblock %}
+</div>
+<footer class="container-fluid text-center">
+  <a href="#page" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>&copy; <span class="o-orange">Alle</span>Watcher 2016</p>
+</footer>
+
+</body>
+</html>

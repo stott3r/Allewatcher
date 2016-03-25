@@ -1,0 +1,9 @@
+{% if result %}
+{% for item in result %}
+<ul>
+    <li>{{item.id}}</li>
+</ul>
+{% endfor %}
+{% else %}
+W ciągu ostatnich 24 godzin nie dodano aukcji która spełniłaby Twoje kryteria.
+{% endif %}

@@ -1,0 +1,5 @@
+Python 3.5
+Django 1.8
+suds-jurko 0.6
+django-simple-captcha 0.5.1
+Pillow

@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} - Obserwuj {% endblock %}
+{% block content %}
+
+<script>
+function showDiv() {
+   document.getElementById('rules').style.display = "block";
+}
+</script>
+<script>
+function hideDiv() {
+   document.getElementById('rules').style.display = "none";
+}
+</script>
+<style>
+.o-orange{
+    color:#F4511E;
+    }
+.o-first{
+    padding-top:100px;
+    background-color:#F2F2F2;
+    min-height:100%;
+    padding-bottom:100px;
+    }
+.has-error .form-control{
+    border-color: #a94442;
+    border-width: 1px;
+    }
+.has-error .form-control:focus{
+    border-color: #F4511E;
+    }
+#error_1_id_phrase{
+    color: #F4511E;
+    }
+#error_1_id_mail{
+    color: #F4511E;
+    }
+#error_1_id_category{
+    color: #F4511E;
+    }
+#id_mail:focus{
+    border-style: solid;
+    border-color: #F4511E;
+    outline-width: 0px;
+    border-width: 1px;
+    }
+#id_phrase:focus{
+    border-style: solid;
+    border-color: #F4511E;
+    outline-width: 0px;
+    border-width: 1px;
+    }
+#id_category:focus{
+    border-style: solid;
+    border-color: #F4511E;
+    outline-width: 0px;
+    border-width: 1px;
+    }
+#submit-id-submit{
+    margin-top:20px;
+    background-color: #F2F2F2;
+    border-color: #F4511E;
+    color: #000000;
+    border-width: 1px;
+    }
+#submit-id-submit:hover{
+    background-color: #F2F2F2;
+    border-color: #F4511E;
+    color: #F4511E;
+    }
+#submit-id-submit:active{
+    background-color: #F4511E;
+    border-color: #FFF;
+    color: #FFF;
+    outline-width: 0px;
+    }
+#rules{
+    margin-top:20px;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+    display: {{message}};
+    background-color: #FFF;
+    padding-bottom:10px;
+    }
+.o-text{
+    font-size:16px;
+    }
+.o-text p{
+    line-height:170%;
+    padding-left:10px;
+    }
+#showrules{
+    background-color: #F2F2F2;
+    border-width: 0px;
+    border-color: #F4511E;
+    border-style: solid;
+    }
+#showrules:hover{
+    color: #F4511E;
+    }
+#hiderules{
+    background-color: #FFF;
+    border-width: 1px;
+    border-color: #F4511E;
+    border-style: solid;
+    }
+#rules-notification{
+    margin-top:20px;
+    font-size:12px;
+    }
+</style>
+<div id="search" class="o-first container-fluid">
+    <div class="container row">
+        <div class="text-center">
+            <p id="search-header" style="font-size:40px; padding-top:20px;
+            padding-bottom:40px;">Obserwuj</p>
+        </div>
+        <div class="col-md-6 col-xs-12">
+        {% crispy form %}
+        </div>
+        <div class="col-md-6 col-xs-12 o-text">
+            <p>
+            <span class="o-orange">Alle</span>Watcher oszczędza Twój cenny czas.
+            </p>
+            <p>
+            <span class="o-orange">Alle</span>Watcher pozwala być Ci zawsze na bieżąco.
+            </p>
+            <p>
+            <span class="o-orange">Alle</span>Watcher pozwala Ci ustawić aż trzy różne obserwacje.
+            </p>
+            <p>
+            <span class="o-orange">Alle</span>Watcher jest całkowicie DARMOWY!
+            </p>
+        </div>
+    </div>
+    <p id="rules-notification">
+        Klikając Obserwuj zgadzasz się z <button id="showrules" type="button" class="btn-default btn-sm"
+                                                     onclick="showDiv()">REGULAMINEM</button>
+        </p>
+    <div id="rules">
+        <p>
+        Strona <span class="o-orange">Alle</span>Watcher.pl wykorzystuje podane przez użytkownika informacje takie jak
+            adres poczty elektronicznej w celu zrealizowania swojej usługi oraz przesłania komunikatów związanych z
+            działaniem i usługamiwyżej wymienionej strony.
+        </p>
+        <p>
+        Na rzeczoną usługę składa się przesyłanie automatycznych maili na podany przez użytkownika adres
+            zawierających informacje o dodanych w ciągu ostatnich 24 godzin aukcjach zamieszczonych w serwisie allegro
+            odpowiadających podanym przez użytkownika parametrom w postaci hasła wyszukiwania oraz kategorii szukanego
+            przedmiotu.
+        </p>
+        <p>
+        Potwierdzenie wykonania usługi wiąże się z aktywacją usługi w systemie <span class="o-orange">Alle</span>Watcher
+            przez odwiedzenieindywidualnego adresu internetowego przyznawanego każdemu zleceniu w obrębie strony
+            <span class="o-orange">Alle</span>Watcher.pl.
+            Na aktywację usługi użytkownik ma 48 godzin od momentu złożenia zlecenia przez kliknięcie przycisku
+            Obserwuj w formularzu znajdującym się pod adresem www.allewatcher.pl/freesearch.
+
+        </p>
+        <p>
+        Usługa jest realizowana codziennie o godzinie 9.00 przez 7 kolejnych dni od dnia następnego jeśli zlecenie
+            wykonania usługi zostało potwierdzone po godzinie 9.00. (Dla obserwacji potwierdzonej o godzinie 15.00 w
+            poniedziałek pierwsza wiadomość zostanie wysłana we wtorek o 9.00.)
+        </p>
+        <p>
+        Zlecenia wykonania usługi są przypisane do adresu poczty elektronicznej podanego przez użytkownika i
+            limitowane do trzech.
+        </p>
+        <p class="text-center">
+        <button id="hiderules" type="button" class="btn-default btn-sm"
+                                                     onclick="hideDiv()">Schowaj</button>
+        </p>
+    </div>
+</div>
+{% endblock %}
