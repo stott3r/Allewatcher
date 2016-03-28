@@ -5,6 +5,7 @@ import random
 # django imports
 from django.core.context_processors import csrf
 from django.core.mail import send_mail
+from django.db.models import Count
 from django.shortcuts import get_object_or_404
 from django.shortcuts import HttpResponseRedirect
 from django.shortcuts import render
@@ -25,21 +26,26 @@ def free_search(request):
             email = form.cleaned_data['mail']
             category = form.cleaned_data['category']
             phrase = form.cleaned_data['phrase']
-            salt = hashlib.sha1(str(random.random()).encode('utf-8')).hexdigest()[:5]
-            activation_key = hashlib.sha1((salt + email).encode('utf-8')).hexdigest()
-            key_expire = datetime.datetime.today() + datetime.timedelta(2)
-            new_search = Search(mail=email, phrase=phrase, activation_key=activation_key,
+            dbase_test = Search.objects.filter(mail=email).count()
+            if dbase_test >= 3:
+                args['message'] = 'block'
+                form = FreeForm()
+            else:
+                salt = hashlib.sha1(str(random.random()).encode('utf-8')).hexdigest()[:5]
+                activation_key = hashlib.sha1((salt + email).encode('utf-8')).hexdigest()
+                key_expire = datetime.datetime.today() + datetime.timedelta(2)
+                new_search = Search(mail=email, phrase=phrase, activation_key=activation_key,
                                     key_expires=key_expire, category=category)
-            new_search.save()
+                new_search.save()
 
-            email_subject = 'AlleWatcher - potwierdź obserwację'
-            email_body = render_to_string('auth_email.txt', {'phrase': phrase, 'activation_key': activation_key})
-            email_bodyhtml = render_to_string('auth_email.html', {'phrase': phrase, 'activation_key': activation_key})
+                email_subject = 'AlleWatcher - potwierdź obserwację'
+                email_body = render_to_string('auth_email.txt', {'phrase': phrase, 'activation_key': activation_key})
+                email_bodyhtml = render_to_string\
+                    ('auth_email.html', {'phrase': phrase, 'activation_key': activation_key})
 
-            send_mail(email_subject, email_body, 'allewatcher@gmail.com',
-                      [email], fail_silently=False, html_message=email_bodyhtml)
-
-            return HttpResponseRedirect('search_send/')
+                send_mail(email_subject, email_body, 'allewatcher@gmail.com',
+                          [email], fail_silently=False, html_message=email_bodyhtml)
+                return HttpResponseRedirect('search_send/')
     else:
         form = FreeForm()
     args['form'] = form

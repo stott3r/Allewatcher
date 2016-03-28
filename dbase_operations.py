@@ -4,6 +4,9 @@ from search.models import Search
 from datetime import datetime
 # module executing every 12 hours
 # creates tuple with category choices and saves it in database
+import django
+
+django.setup()
 
 
 def choices():
@@ -19,7 +22,7 @@ def choices():
             entry.save()
 
 
-# checks database entries and deletes old or not activated searchings
+# checks database entries and deletes old or not activated searches
 
 
 def check():

@@ -100,7 +100,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False  # false let me to compare dates in main.py Run().check()
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -119,7 +119,7 @@ FILE_UPLOAD_TEMP_DIR = os.path.join(PROJECT_PATH, 'tmp')
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'allewatcher@gmail.com'
-EMAIL_HOST_PASSWORD = 'blacharska1'  # have to delete this before put on github
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'allewatcher@gmail.com'

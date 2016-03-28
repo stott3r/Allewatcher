@@ -1,11 +1,11 @@
 from search.models import *
 from django.core.mail import send_mail
-from datetime import datetime
 from django.template.loader import render_to_string
 import django
 from allegro import *
 
 django.setup()
+
 
 class Run:
     def __init__(self):
@@ -46,7 +46,7 @@ class Run:
             result = self.allegro.search(entry.category, phrase, interval)
             category = self.category_check(entry.category)
             for item in result:
-                item['name'] = self.title_creator(item['name'])
+                item['low_name'] = self.title_creator(item['name'])
             email_subject = "AlleWatcher - " + phrase.title() + " w kategorii " + category + "."
             email_body = render_to_string('email.txt', {'phrase': phrase, 'category': category,
                                                         'result': result})

@@ -1,9 +1,43 @@
+<body style="background-color:#FFF;">
+<div style="padding:35px 15px 30px 15px; background-color:#F2F2F2; margin:20px 40px 20px 40px;">
+    <h2 style="text-align:center;">Witaj,</h2>
+    <p style="font-size:16px;">
+        Raport obserwacji hasła <span style="color:#F4511E;">{{phrase}}</span> w kategorii
+        <span style="color:#F4511E;">{{category}}</span>
+        ze strony <span style="color:#F4511E;">Alle</span>Watcher.pl.
+    </p>
 {% if result %}
+<ul style="list-style:none;">
 {% for item in result %}
-<ul>
-    <li>{{item.id}}</li>
-</ul>
+    <li style="font-size:14px; marign-bottom:10px; display:inline;">
+
+    <p style="line-height:150%;">
+    <a href="{{item.photo}}"><img style="float:left; margin-right:10px;" src="{{item.photo}}" height="60" width="50"></a>
+    Tytuł: {{item.name}} <br />
+    {% if item.type == buyNow %}
+        Cena Kup Teraz: {{item.price}} zł.
+    {% else %}
+        Aukcja, aktualna cena: {{item.price}} zł.
+    {% endif %}
+        <br />
+        <a style="color:#F4511E; text-decoration: none;"
+           href="www.allegro.pl/{{item.low_name}}-i{{item.id}}.html">Przejdź do aukcji</a>
+    </p>
+    </li>
+
 {% endfor %}
+</ul>
 {% else %}
+<p style="font-size:15px;">
 W ciągu ostatnich 24 godzin nie dodano aukcji która spełniłaby Twoje kryteria.
+</p>
 {% endif %}
+<p style="font-size:15px; padding-top:10px;">
+Pozdrawiamy, <br />
+Zespół <span style="color:#F4511E;">Alle</span>Watcher
+</p>
+<p style="font-size:10px; padding-top:20px;">
+    Wiadomość wygenerowana automatycznie, nie odpowiadaj na nią.
+</p>
+</div>
+</body>

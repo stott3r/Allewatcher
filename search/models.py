@@ -43,7 +43,6 @@ class Search(models.Model):
     def __str__(self):
         return '%s, %s' % (self.mail, self.phrase)
 
-
     class Meta:
         verbose_name = "Wyszukanie"
         verbose_name_plural = "Wyszukania"

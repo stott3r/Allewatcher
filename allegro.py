@@ -3,7 +3,7 @@ from suds.client import Client
 
 class Allegro:
     def __init__(self):
-        self.webapi_key = 'f8e0c860'  # delete this before upload to github
+        self.webapi_key = ''
         self.country = 1
         self.client = Client('https://webapi.allegro.pl/service.php?wsdl')
         self.client.options.cache.setduration(hours=2)
@@ -40,6 +40,7 @@ class Allegro:
 
         for item in search_raw_result:
             search_result.append({'id': item.itemId, 'name': item.itemTitle,
-                                  'type': item.priceInfo.item[0].priceType, 'price': item.priceInfo.item[0].priceValue})
+                                  'type': item.priceInfo.item[0].priceType, 'price': item.priceInfo.item[0].priceValue,
+                                  'photo': item.photosInfo.item[2].photoUrl})
 
         return search_result
