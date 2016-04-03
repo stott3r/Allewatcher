@@ -35,8 +35,8 @@ class Search(models.Model):
     end_date = models.DateTimeField(verbose_name="Data końcowa", blank=True, null=True)
     activation_key = models.CharField(max_length=40, blank=True)
     key_expires = models.DateTimeField(default=timezone.now)
-    category = models.DecimalField(verbose_name='Kategoria', max_digits=6,
-                                   decimal_places=0, choices=final_list, default=None)
+    category = models.IntegerField(verbose_name='Kategoria',
+                                   choices=final_list, default=None)
     # for now search engine don't use search_interval yet
     search_interval = models.CharField(verbose_name='Czas wystawienia', max_length=5, default='24h')
 
